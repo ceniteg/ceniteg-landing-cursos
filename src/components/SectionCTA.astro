@@ -1,0 +1,30 @@
+---
+import { Phone, Mail } from "@lucide/astro";
+---
+
+{/* CTA Section */}
+<section
+    class="py-20 bg-gradient-to-r from-[#0a30b8] to-[#0a30b8]/80 text-white"
+>
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl lg:text-4xl mb-6 font-semibold">
+            ¿Listo para Transformar la Seguridad en su Empresa?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Contáctenos hoy mismo y descubra cómo CENITEG SOLUTIONS puede
+            ayudarle a impulsar el éxito y la seguridad de su organización.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="flex gap-2 bg-white text-[#0a30b8] hover:bg-white/90 p-4 rounded-3xl">
+                <Phone class="mr-2 h-5 w-5" />
+                Llamar Ahora
+            </button>
+            <button
+                class="flex gap-2 border-white text-white hover:bg-white hover:text-[#0a30b8] p-4 rounded-3xl"
+            >
+                <Mail class="mr-2 h-5 w-5" />
+                Enviar Mensaje
+            </button>
+        </div>
+    </div>
+</section>

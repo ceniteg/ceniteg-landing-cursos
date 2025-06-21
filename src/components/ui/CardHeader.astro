@@ -1,0 +1,14 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: userClass } = Astro.props;
+const defaultClass = "flex flex-col space-y-1.5 p-6";
+const finalClass = `${defaultClass} ${userClass ?? ""}`;
+---
+
+<div class={finalClass}>
+    <slot />
+</div>
+

@@ -1,0 +1,18 @@
+{/* Stats Section */}
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    {[
+        { number: "25+", label: "Cursos Especializados" },
+        { number: "50+", label: "Empresas Capacitadas" },
+        { number: "3,000+", label: "Trabajadores Formados" },
+        { number: "100%", label: "Cumplimiento Legal" },
+    ].map((stat, index) => (
+        <div class="text-center">
+        <div class="text-3xl lg:text-4xl text-[#0a30b8] mb-2 font-semibold">{stat.number}</div>
+        <div class="text-gray-600">{stat.label}</div>
+        </div>
+    ))}
+    </div>
+</div>
+</section>

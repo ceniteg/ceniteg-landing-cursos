@@ -1,0 +1,222 @@
+---
+import {
+  Users,
+  Monitor,
+  BookOpen,
+  Headphones,
+  MapPin,
+  Zap,
+} from "@lucide/astro";
+
+const methodology = [
+  {
+    icon: Users,
+    title: "Enfoque Colaborativo",
+    description: "Metodología práctica con técnicas lúdicas y casos reales",
+  },
+  {
+    icon: Monitor,
+    title: "Realidad Virtual",
+    description: "Visores VR para experiencias inmersivas en entornos seguros",
+  },
+  {
+    icon: BookOpen,
+    title: "Casos Reales",
+    description: "Aplicación práctica con situaciones del mundo real",
+  },
+  {
+    icon: Headphones,
+    title: "Modalidades Flexibles",
+    description: "Presencial, in-house, virtual o híbrida según necesidades",
+  },
+];
+
+type Methodology = "virtual" | "prescencial" | "inhouse" | "hibrida";
+const activeTab: Methodology = "prescencial";
+---
+
+{/* Methodology Section */}
+<section id="metodologia" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
+        Metodología Innovadora
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Nuestra metodología se caracteriza por su enfoque práctico y
+        colaborativo, utilizando tecnología de vanguardia para un aprendizaje
+        efectivo.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+      <div class="space-y-8">
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
+            <div class="text-[#0a30b8]"><Users class="h-12 w-12" /></div>
+          </div>
+          <div>
+            <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
+              Enfoque Colaborativo
+            </h3>
+            <p class="text-gray-600">
+              Metodología práctica con técnicas lúdicas y casos reales
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
+            <div class="text-[#0a30b8]"><Monitor class="h-12 w-12" /></div>
+          </div>
+          <div>
+            <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
+              Realidad Virtual
+            </h3>
+            <p class="text-gray-600">
+              Visores VR para experiencias inmersivas en entornos seguros
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
+            <div class="text-[#0a30b8]"><BookOpen class="h-12 w-12" /></div>
+          </div>
+          <div>
+            <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
+              Casos Reales
+            </h3>
+            <p class="text-gray-600">
+              Aplicación práctica con situaciones del mundo real
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
+            <div class="text-[#0a30b8]"><Headphones class="h-12 w-12" /></div>
+          </div>
+          <div>
+            <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
+              Modalidades Flexibles
+            </h3>
+            <p class="text-gray-600">
+              Presencial, in-house, virtual o híbrida según necesidades
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img
+          src="/images/vr-training-2.png"
+          alt="Capacitación VR"
+          width={300}
+          height={200}
+          class="rounded-lg object-cover w-full h-48"
+        />
+        <img
+          src="/images/group-training.png"
+          alt="Capacitación Grupal"
+          width={300}
+          height={200}
+          class="rounded-lg object-cover w-full h-48"
+        />
+        <img
+          src="/images/interactive-training.png"
+          alt="Capacitación Interactiva"
+          width={300}
+          height={200}
+          class="rounded-lg object-cover w-full h-48"
+        />
+        <img
+          src="/images/first-aid-training.png"
+          alt="Primeros Auxilios"
+          width={300}
+          height={200}
+          class="rounded-lg object-cover w-full h-48"
+        />
+      </div>
+    </div>
+
+    {/* Training Modalities */}
+    <div class="bg-[#F4F4F4] rounded-2xl p-8">
+      <h3 class="text-2xl text-[#0a30b8] mb-8 text-center font-semibold">
+        Modalidades de Capacitación
+      </h3>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        {
+          [
+            { id: "presencial", label: "Presencial", icon: Users },
+            { id: "inhouse", label: "In-House", icon: MapPin },
+            { id: "virtual", label: "Virtual", icon: Monitor },
+            { id: "hibrida", label: "Híbrida", icon: Zap },
+          ].map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button class={activeTab === tab.id ? "bg-[#0a30b8]" : ""}>
+                <Icon class="h-5 w-5"/>
+                {tab.label}
+              </button>
+            );
+          })
+        }
+      </div>
+      <!-- <div class="text-center">
+              {activeTab === "presencial" && (
+                <div class="space-y-4">
+                  <img
+                    src="/images/classroom-training.png"
+                    alt="Capacitación Presencial"
+                    width={600}
+                    height={300}
+                    class="rounded-lg mx-auto object-cover"
+                  />
+                  <p class="text-gray-700">
+                    Capacitación presencial en nuestras instalaciones con equipos especializados y metodología práctica.
+                  </p>
+                </div>
+              )}
+              {activeTab === "virtual" && (
+                <div class="space-y-4">
+                  <img
+                    src="/images/virtual-training.png"
+                    alt="Capacitación Virtual"
+                    width={600}
+                    height={300}
+                    class="rounded-lg mx-auto object-cover"
+                  />
+                  <p class="text-gray-700">
+                    Capacitación virtual interactiva con plataformas especializadas y seguimiento personalizado.
+                  </p>
+                </div>
+              )}
+              {activeTab === "inhouse" && (
+                <div class="space-y-4">
+                  <img
+                    src="/images/vr-training-3.png"
+                    alt="Capacitación In-House"
+                    width={600}
+                    height={300}
+                    class="rounded-lg mx-auto object-cover"
+                  />
+                  <p class="text-gray-700">
+                    Capacitación en las instalaciones de su empresa, adaptada a sus procesos específicos.
+                  </p>
+                </div>
+              )}
+              {activeTab === "hibrida" && (
+                <div class="space-y-4">
+                  <img
+                    src="/images/vr-training-4.png"
+                    alt="Capacitación Híbrida"
+                    width={600}
+                    height={300}
+                    class="rounded-lg mx-auto object-cover"
+                  />
+                  <p class="text-gray-700">
+                    Combinación de modalidades presencial y virtual para máxima flexibilidad y efectividad.
+                  </p>
+                </div>
+              )}
+            </div> -->
+    </div>
+  </div>
+</section>

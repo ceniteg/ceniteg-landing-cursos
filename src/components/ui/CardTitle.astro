@@ -1,0 +1,14 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: userClass } = Astro.props;
+const defaultClass = "text-2xl font-semibold leading-none tracking-tight";
+const finalClass = `${defaultClass} ${userClass ?? ""}`;
+---
+
+<div class={finalClass}>
+    <slot />
+</div>
+
