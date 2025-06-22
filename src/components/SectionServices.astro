@@ -1,0 +1,380 @@
+---
+import { Monitor, Users, Shield, Target, Clock1 } from "@lucide/astro";
+import type { Course } from "../interface/Course";
+
+const courses: Course[] = [
+  {
+    title:
+      "Gestión de la Seguridad y Salud ocupacional basado en el Reglamento de Seguridad y Salud Ocupacional",
+    description:
+      "Simulaciones inmersivas para entrenamientos de seguridad en entornos controlados.",
+    image: "/images/vr-training-office.png",
+    features: [
+      "Tecnología VR avanzada",
+      "Escenarios realistas",
+      "Evaluación en tiempo real",
+    ],
+    duration: "8 horas",
+    icon: Monitor,
+  },
+  {
+    title:
+      "Comité de Seguridad y Salud Ocupacional, Reglamento Interno de Seguridad y Salud Ocupacional. Programa Anual de Seguridad y Salud Ocupacional",
+    description:
+      "Formación integral para miembros del comité y elaboración del programa anual.",
+    image: "/images/committee-training.jpg",
+    features: ["Normativa actualizada", "Casos prácticos", "Material oficial"],
+    duration: "8 horas",
+    icon: Users,
+  },
+  {
+    title: "IPERC",
+    description:
+      "Identificación de peligros, evaluación y control de riesgos en el entorno laboral.",
+    image: "/images/iperc-training.jpg",
+    features: ["Metodología IPERC", "Ejercicios aplicados", "Guías oficiales"],
+    duration: "8 horas",
+    icon: Shield,
+  },
+  {
+    title: "Estándares y Procedimientos de Trabajo Seguro por Actividades",
+    description:
+      "Desarrollo y aplicación de procedimientos seguros para diversas actividades laborales.",
+    image: "/images/procedures-training.jpg",
+    features: [
+      "Protocolos oficiales",
+      "Simulaciones prácticas",
+      "Evaluaciones continuas",
+    ],
+    duration: "8 horas",
+    icon: Target,
+  },
+  {
+    title: "Significado y El Uso del Código de Señales y Colores",
+    description:
+      "Interpretación y aplicación de códigos de señales y colores en seguridad industrial.",
+    image: "/images/signals-training.jpg",
+    features: [
+      "Normas internacionales",
+      "Ejercicios visuales",
+      "Material didáctico",
+    ],
+    duration: "4 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Mapa de Riesgos - Riesgos Psicosociales",
+    description:
+      "Elaboración de mapas de riesgos y gestión de riesgos psicosociales.",
+    image: "/images/riskmap-training.jpg",
+    features: ["Técnicas de mapeo", "Casos reales", "Herramientas digitales"],
+    duration: "6 horas",
+    icon: Shield,
+  },
+  {
+    title:
+      "Notificación, Investigación y Reporte de Incidentes, Incidentes Peligrosos y Accidentes De Trabajo",
+    description:
+      "Procedimientos para la notificación, investigación y reporte de incidentes laborales.",
+    image: "/images/incident-training.jpg",
+    features: [
+      "Protocolos oficiales",
+      "Simulación de reportes",
+      "Análisis de casos",
+    ],
+    duration: "8 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Auditoría, Fiscalización e Inspección de Seguridad",
+    description:
+      "Capacitación en auditoría, fiscalización e inspección de seguridad laboral.",
+    image: "/images/audit-training.jpg",
+    features: [
+      "Normativa vigente",
+      "Simulaciones de auditoría",
+      "Evaluación práctica",
+    ],
+    duration: "8 horas",
+    icon: Target,
+  },
+  {
+    title: "Prevención de Accidentes por Gaseamiento",
+    description:
+      "Técnicas y procedimientos para prevenir accidentes por gaseamiento en minas.",
+    image: "/images/gas-prevention.jpg",
+    features: ["Detección de gases", "Protocolos de emergencia", "Simulacros"],
+    duration: "6 horas",
+    icon: Shield,
+  },
+  {
+    title: "Prevención de Accidentes por Desprendimiento de Rocas",
+    description:
+      "Medidas preventivas y procedimientos ante desprendimiento de rocas.",
+    image: "/images/rockfall-prevention.jpg",
+    features: [
+      "Simulación de riesgos",
+      "Protocolos de seguridad",
+      "Casos reales",
+    ],
+    duration: "6 horas",
+    icon: Target,
+  },
+  {
+    title: "Respuesta a Emergencias por Áreas Específicas",
+    description:
+      "Entrenamiento en respuesta a emergencias adaptado a diferentes áreas de trabajo.",
+    image: "/images/emergency-response.jpg",
+    features: [
+      "Simulacros específicos",
+      "Guías de emergencia",
+      "Evaluación práctica",
+    ],
+    duration: "8 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Primeros Auxilios",
+    description:
+      "Entrenamiento práctico en técnicas de RCP y primeros auxilios según estándares internacionales.",
+    image: "/images/cpr-training.jpg",
+    features: [
+      "Certificación oficial",
+      "Práctica con maniquíes",
+      "Instructores certificados",
+    ],
+    duration: "16 horas",
+    icon: Shield,
+  },
+  {
+    title:
+      "Higiene Ocupacional (Agentes Físicos, Químicos, Biológicos) Disposición de Residuos Sólidos. Control de sustancias peligrosas",
+    description:
+      "Gestión de higiene ocupacional y control de agentes peligrosos en el ambiente laboral.",
+    image: "/images/hygiene-training.jpg",
+    features: [
+      "Normas de higiene",
+      "Control de residuos",
+      "Manejo de sustancias peligrosas",
+    ],
+    duration: "8 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Seguridad en la Oficina y Ergonomía",
+    description: "Capacitación en prácticas seguras y ergonómicas en oficinas.",
+    image: "/images/office-safety.jpg",
+    features: [
+      "Evaluación ergonómica",
+      "Prevención de lesiones",
+      "Material didáctico",
+    ],
+    duration: "4 horas",
+    icon: Users,
+  },
+  {
+    title: "Prevención y Protección Contra Incendios",
+    description:
+      "Técnicas y protocolos para la prevención y protección contra incendios.",
+    image: "/images/fire-safety.jpg",
+    features: [
+      "Simulacros de incendio",
+      "Uso de extintores",
+      "Normativa vigente",
+    ],
+    duration: "8 horas",
+    icon: Shield,
+  },
+  {
+    title: "El Uso de Equipo de Protección Personal (EPP)",
+    description: "Capacitación en selección y uso adecuado de EPP.",
+    image: "/images/epp-training.jpg",
+    features: ["Tipos de EPP", "Práctica de uso", "Normas internacionales"],
+    duration: "4 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Trabajos en Altura",
+    description:
+      "Capacitación especializada para trabajos en altura y espacios confinados.",
+    image: "/images/vr-industrial-training.png",
+    features: [
+      "Simulación de riesgos",
+      "Protocolos de seguridad",
+      "Certificación especializada",
+    ],
+    duration: "24 horas",
+    icon: Target,
+  },
+  {
+    title: "Liderazgo y Motivación - Seguridad Basada en el Comportamiento",
+    description:
+      "Desarrollo de liderazgo y motivación para fomentar la seguridad basada en el comportamiento.",
+    image: "/images/leadership-training.jpg",
+    features: ["Dinámicas grupales", "Casos prácticos", "Material didáctico"],
+    duration: "12 horas",
+    icon: Users,
+  },
+  {
+    title: "Riesgos Eléctricos",
+    description:
+      "Identificación y control de riesgos eléctricos en el entorno laboral.",
+    image: "/images/electrical-safety.jpg",
+    features: [
+      "Normas eléctricas",
+      "Simulaciones prácticas",
+      "Evaluación continua",
+    ],
+    duration: "8 horas",
+    icon: Shield,
+  },
+  {
+    title: "Manejo Defensivo y/o Transporte de Personal",
+    description:
+      "Capacitación en técnicas de manejo defensivo y transporte seguro de personal.",
+    image: "/images/defensive-driving.jpg",
+    features: [
+      "Simulación de manejo",
+      "Protocolos de seguridad",
+      "Evaluación práctica",
+    ],
+    duration: "8 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Gestión de Riesgos en Espacios Confinados",
+    description:
+      "Capacitación en identificación, evaluación y control de riesgos en espacios confinados, incluyendo uso de EPP, procedimientos de entrada y rescate, y cumplimiento normativo.",
+    image: "/images/confined-space-training.jpg",
+    features: [
+      "Identificación de riesgos",
+      "Protocolos de entrada y rescate",
+      "Uso de equipos de protección",
+    ],
+    duration: "8 horas",
+    icon: Shield,
+  },
+  {
+    title: "Trabajos en Caliente",
+    description:
+      "Formación en procedimientos seguros para trabajos que implican fuentes de ignición, como soldadura y corte, con énfasis en permisos, vigilancia contra incendios y medidas preventivas.",
+    image: "/images/hot-work-training.jpg",
+    features: [
+      "Permisos de trabajo en caliente",
+      "Prevención de incendios",
+      "Protocolos de emergencia",
+    ],
+    duration: "6 horas",
+    icon: Monitor,
+  },
+  {
+    title: "Seguridad en el Manejo de Cargas",
+    description:
+      "Entrenamiento integral en técnicas ergonómicas y procedimientos seguros para el levantamiento, transporte y manipulación de cargas, minimizando riesgos de lesiones musculoesqueléticas.",
+    image: "/images/load-handling-training.jpg",
+    features: [
+      "Técnicas ergonómicas",
+      "Identificación de riesgos",
+      "Prácticas seguras",
+    ],
+    duration: "6 horas",
+    icon: Target,
+  },
+];
+
+---
+
+{/* Services Section */}
+<section id="cursos">
+  <div class="flex flex-col">
+    <div class="text-center mb-16 py-6 bg-[#F4F4F4]">
+      <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
+        Cursos de Capacitación Especializados
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Ofrecemos programas de capacitación integral que cumplen con los
+        estándares de la Ley 29783 y D.S. 024-2016-EM y Modificatoria para
+        Minería, utilizando metodologías innovadoras y tecnología de vanguardia.
+      </p>
+    </div>
+
+    <div
+      class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto bg-white p-6"
+    >
+      {
+        courses.map((course) => {
+          const Icon = course.icon;
+          return (
+            <div
+              class="course-item flex flex-col gap-2 rounded-xl ring-[#c4c9d1] ring-1 max-w-[320px] py-2 px-4"
+            >
+              <div class="flex flex-col gap-2">
+                <div class="w-8 p-2 ">
+                  <Icon />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <p class="text-[0.9em] font-semibold">{course?.title}</p>
+                  <div class="flex gap-2 items-center text-[#65686e]">
+                    <Clock1 class="w-4 h-4" />
+                    <p class="text-[0.75em]">{course?.duration}</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[0.75em] text-[#65686e]">{course?.description}</p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                {course.features.map((feat) => (
+                  <p class="text-[0.75em] p-[0.30rem] rounded-2xl bg-[#f4f4f5]">
+                    {feat}
+                  </p>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="text-center mt-4">
+      <button data-toggle id="toggle-btn" class="px-4 py-2 bg-blue-700 text-white rounded-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-[5px] cursor-pointer">
+        Ver más
+      </button>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const initialVisible = 6;
+  const btn = document.getElementById("toggle-btn");
+  const items = [...document.querySelectorAll(".course-item")];
+  const initial = { count: { current: initialVisible } };
+
+  const update = () => {
+      items.forEach((el, index) => {
+        el.style.display = index < initialVisible ? "block" : "none";
+      });
+      btn.textContent = initialVisible < items.length ? "Ver más" : "Ocultar";
+    };
+
+  btn.addEventListener("click", () => {
+    const visible = initial.count.current;
+    const next = visible + 6;
+
+    if (visible < items.length) {
+      for (let i = visible; i < next && i < items.length; i++) {
+        items[i].style.display = "block";
+      }
+      initial.count.current = next;
+      if (initial.count.current >= items.length) {
+        btn.textContent = "Ocultar";
+      }
+    } else {
+      for (let i = initialVisible; i < items.length; i++) {
+        items[i].style.display = "none";
+      }
+      initial.count.current = initialVisible;
+      btn.textContent = "Ver más";
+    }
+  });
+
+  update();
+</script>

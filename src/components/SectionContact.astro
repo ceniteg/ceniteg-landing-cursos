@@ -4,77 +4,71 @@ import { Phone, Mail, MapPin, ArrowRight } from "@lucide/astro";
 
 {/* Contact Section */}
 <section id="contacto" class="py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
-                Contáctanos
-            </h2>
-            <p class="text-xl text-gray-600">
-                Estamos aquí para ayudarte a mejorar la seguridad en tu empresa
-            </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12">
-            <div class="space-y-8">
-                <div class="flex items-start space-x-4">
-                    <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
-                        <Phone class="h-6 w-6 text-[#0a30b8]" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#0a30b8] mb-1">
-                            Teléfono
-                        </h3>
-                        <p class="text-gray-600">+51 956 761 053</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
-                        <Mail class="h-6 w-6 text-[#0a30b8]" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#0a30b8] mb-1">Email</h3>
-                        <p class="text-gray-600">info@ceniteg.com</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
-                        <MapPin class="h-6 w-6 text-[#0a30b8]" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-[#0a30b8] mb-1">
-                            Ubicación
-                        </h3>
-                        <p class="text-gray-600">Cal. Marcelo Corne 279</p>
-                        <p class="text-gray-600">
-                            Trujillo, La Libertad - Perú
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6">
-                <div class="px-0 pt-0">
-                    <div class="text-[#0a30b8]">Solicitar Información</div>
-                    <div>
-                        Complete el formulario y nos pondremos en contacto con
-                        usted
-                    </div>
-                </div>
-                <div class="px-0 space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input placeholder="Nombre" />
-                        <input placeholder="Apellido" />
-                    </div>
-                    <input placeholder="Email" type="email" />
-                    <input placeholder="Teléfono" />
-                    <input placeholder="Empresa" />
-                    <textarea placeholder="Mensaje" rows={4}></textarea>
-                    <button class="w-full bg-[#0a30b8] hover:bg-[#0a30b8]/90">
-                        Enviar Mensaje
-                        <ArrowRight class="ml-2 h-4 w-4" />
-                    </button>
-                </div>
-            </div>
-        </div>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
+        Contáctanos
+      </h2>
+      <p class="text-xl text-gray-600">
+        Estamos aquí para ayudarte a mejorar la seguridad en tu empresa
+      </p>
     </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
+            <Phone class="h-6 w-6 text-[#0a30b8]" />
+          </div>
+          <div>
+            <h3 class="font-semibold text-[#0a30b8] mb-1">Teléfono</h3>
+            <p class="text-gray-600">+51 956 761 053</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
+            <Mail class="h-6 w-6 text-[#0a30b8]" />
+          </div>
+          <div>
+            <h3 class="font-semibold text-[#0a30b8] mb-1">Email</h3>
+            <p class="text-gray-600">info@ceniteg.com</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="bg-[#0a30b8]/10 p-3 rounded-lg">
+            <MapPin class="h-6 w-6 text-[#0a30b8]" />
+          </div>
+          <div>
+            <h3 class="font-semibold text-[#0a30b8] mb-1">Ubicación</h3>
+            <p class="text-gray-600">Cal. Marcelo Corne 279</p>
+            <p class="text-gray-600">Trujillo, La Libertad - Perú</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 ring-gray-200 ring-1 rounded-2xl">
+        <div class="px-0 pt-0 pb-4">
+          <div class="text-[#0a30b8] font-semibold">Solicitar Información</div>
+          <p class="text-[0.75em] text-gray-600">
+            Complete el formulario y nos pondremos en contacto con usted
+          </p>
+        </div>
+        <div class="flex flex-col px-0 space-y-3">
+          <div class="grid grid-cols-2 gap-4">
+            <input placeholder="Nombre" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+            <input placeholder="Apellido" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+          </div>
+          <input placeholder="Email" type="email" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+          <input placeholder="Teléfono" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+          <input placeholder="Empresa" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+          <textarea placeholder="Mensaje" rows={4} class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"></textarea>
+          <button
+            class="w-full bg-[#0a30b8] text-white hover:bg-[#0a30b8]/90 py-2 rounded-2xl cursor-pointer"
+          >
+            Enviar Mensaje
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

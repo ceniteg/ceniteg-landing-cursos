@@ -1,31 +1,20 @@
 ---
-import {
-  Users,
-  Monitor,
-  BookOpen,
-  Headphones,
-  MapPin,
-  Zap,
-} from "@lucide/astro";
+import { Users, Monitor, MapPin, Zap } from "@lucide/astro";
 
 const methodology = [
   {
-    icon: Users,
     title: "Enfoque Colaborativo",
     description: "Metodología práctica con técnicas lúdicas y casos reales",
   },
   {
-    icon: Monitor,
     title: "Realidad Virtual",
     description: "Visores VR para experiencias inmersivas en entornos seguros",
   },
   {
-    icon: BookOpen,
     title: "Casos Reales",
     description: "Aplicación práctica con situaciones del mundo real",
   },
   {
-    icon: Headphones,
     title: "Modalidades Flexibles",
     description: "Presencial, in-house, virtual o híbrida según necesidades",
   },
@@ -53,7 +42,15 @@ const activeTab: Methodology = "prescencial";
       <div class="space-y-8">
         <div class="flex items-start space-x-4">
           <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
-            <div class="text-[#0a30b8]"><Users class="h-12 w-12" /></div>
+            <lord-icon
+              src="https://cdn.lordicon.com/jdgfsfzr.json"
+              trigger="loop"
+              delay="2000"
+              stroke="bold"
+              colors="primary:#0a30b8,secondary:#0a30b8"
+              style="width:48px;height:48px"
+            >
+            </lord-icon>
           </div>
           <div>
             <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
@@ -66,7 +63,15 @@ const activeTab: Methodology = "prescencial";
         </div>
         <div class="flex items-start space-x-4">
           <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
-            <div class="text-[#0a30b8]"><Monitor class="h-12 w-12" /></div>
+            <lord-icon
+              src="https://cdn.lordicon.com/ogjpwrxe.json"
+              trigger="loop"
+              delay="2000"
+              stroke="bold"
+              colors="primary:#0a30b8,secondary:#0a30b8"
+              style="width:48px;height:48px"
+            >
+            </lord-icon>
           </div>
           <div>
             <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
@@ -79,7 +84,15 @@ const activeTab: Methodology = "prescencial";
         </div>
         <div class="flex items-start space-x-4">
           <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
-            <div class="text-[#0a30b8]"><BookOpen class="h-12 w-12" /></div>
+            <lord-icon
+              src="https://cdn.lordicon.com/rpviwvwn.json"
+              trigger="loop"
+              delay="2000"
+              stroke="bold"
+              colors="primary:#0a30b8,secondary:#0a30b8"
+              style="width:48px;height:48px"
+            >
+            </lord-icon>
           </div>
           <div>
             <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
@@ -92,7 +105,15 @@ const activeTab: Methodology = "prescencial";
         </div>
         <div class="flex items-start space-x-4">
           <div class="bg-[#0a30b8]/10 p-3 rounded-lg flex-shrink-0">
-            <div class="text-[#0a30b8]"><Headphones class="h-12 w-12" /></div>
+            <lord-icon
+              src="https://cdn.lordicon.com/cfoaotmk.json"
+              trigger="loop"
+              delay="2000"
+              stroke="bold"
+              colors="primary:#0a30b8,secondary:#0a30b8"
+              style="width:48px;height:48px"
+            >
+            </lord-icon>
           </div>
           <div>
             <h3 class="text-xl text-[#0a30b8] mb-2 font-semibold">
@@ -113,21 +134,21 @@ const activeTab: Methodology = "prescencial";
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/group-training.png"
+          src="/images/group-training.webp"
           alt="Capacitación Grupal"
           width={300}
           height={200}
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/interactive-training.png"
+          src="/images/interactive-training.webp"
           alt="Capacitación Interactiva"
           width={300}
           height={200}
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/first-aid-training.png"
+          src="/images/first-aid-training.webp"
           alt="Primeros Auxilios"
           width={300}
           height={200}
@@ -151,72 +172,110 @@ const activeTab: Methodology = "prescencial";
           ].map((tab) => {
             const Icon = tab.icon;
             return (
-              <button class={activeTab === tab.id ? "bg-[#0a30b8]" : ""}>
-                <Icon class="h-5 w-5"/>
-                {tab.label}
+              <button
+                id={tab.id}
+                class={`modalidad rounded-2xl py-2 px-3 transition-all duration-500 ease-in-out transform hover:-translate-y-[5px] cursor-pointer ${tab.id === "presencial" ? "bg-[#0a30b8] text-white" : "bg-white"}`}
+              >
+                <div class="flex gap-2">
+                  <Icon class="h-5 w-5" />
+                  <p>{tab.label}</p>
+                </div>
               </button>
             );
           })
         }
       </div>
-      <!-- <div class="text-center">
-              {activeTab === "presencial" && (
-                <div class="space-y-4">
-                  <img
-                    src="/images/classroom-training.png"
-                    alt="Capacitación Presencial"
-                    width={600}
-                    height={300}
-                    class="rounded-lg mx-auto object-cover"
-                  />
-                  <p class="text-gray-700">
-                    Capacitación presencial en nuestras instalaciones con equipos especializados y metodología práctica.
-                  </p>
-                </div>
-              )}
-              {activeTab === "virtual" && (
-                <div class="space-y-4">
-                  <img
-                    src="/images/virtual-training.png"
-                    alt="Capacitación Virtual"
-                    width={600}
-                    height={300}
-                    class="rounded-lg mx-auto object-cover"
-                  />
-                  <p class="text-gray-700">
-                    Capacitación virtual interactiva con plataformas especializadas y seguimiento personalizado.
-                  </p>
-                </div>
-              )}
-              {activeTab === "inhouse" && (
-                <div class="space-y-4">
-                  <img
-                    src="/images/vr-training-3.png"
-                    alt="Capacitación In-House"
-                    width={600}
-                    height={300}
-                    class="rounded-lg mx-auto object-cover"
-                  />
-                  <p class="text-gray-700">
-                    Capacitación en las instalaciones de su empresa, adaptada a sus procesos específicos.
-                  </p>
-                </div>
-              )}
-              {activeTab === "hibrida" && (
-                <div class="space-y-4">
-                  <img
-                    src="/images/vr-training-4.png"
-                    alt="Capacitación Híbrida"
-                    width={600}
-                    height={300}
-                    class="rounded-lg mx-auto object-cover"
-                  />
-                  <p class="text-gray-700">
-                    Combinación de modalidades presencial y virtual para máxima flexibilidad y efectividad.
-                  </p>
-                </div>
-              )}
-            </div> -->
+
+      <div class="text-center">
+        <div id="presencial-info" class="modalidad space-y-4">
+          <img
+            src="/images/classroom-training.webp"
+            alt="Capacitación Presencial"
+            width={600}
+            height={300}
+            class="rounded-lg mx-auto object-cover"
+          />
+          <p class="text-gray-700">
+            Capacitación presencial en nuestras instalaciones con equipos
+            especializados y metodología práctica.
+          </p>
+        </div>
+
+        <div id="virtual-info" class="modalidad space-y-4 hidden">
+          <img
+            src="/images/virtual-training.webp"
+            alt="Capacitación Virtual"
+            width={600}
+            height={300}
+            class="rounded-lg mx-auto object-cover"
+          />
+          <p class="text-gray-700">
+            Capacitación virtual interactiva con plataformas especializadas y
+            seguimiento personalizado.
+          </p>
+        </div>
+
+        <div id="inhouse-info" class="modalidad space-y-4 hidden">
+          <img
+            src="/images/vr-training-3.webp"
+            alt="Capacitación In-House"
+            width={600}
+            height={300}
+            class="rounded-lg mx-auto object-cover"
+          />
+          <p class="text-gray-700">
+            Capacitación en las instalaciones de su empresa, adaptada a sus
+            procesos específicos.
+          </p>
+        </div>
+
+        <div id="hibrida-info" class="modalidad space-y-4 hidden">
+          <img
+            src="/images/vr-training-4.webp"
+            alt="Capacitación Híbrida"
+            width={600}
+            height={300}
+            class="rounded-lg mx-auto object-cover"
+          />
+          <p class="text-gray-700">
+            Combinación de modalidades presencial y virtual para máxima
+            flexibilidad y efectividad.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script type="module">
+  const items = [...document.querySelectorAll(".modalidad")];
+  console.log(items.length);
+
+  const selectModalidad = (mode) => {
+    items.forEach((element) => {
+      if (element.id.includes(mode)) {
+        if (element.id === mode){
+          element.style.color = "#fff";
+          element.style.backgroundColor = "#0a30b8";
+        }else{
+          element.style.display = "block"
+        }
+        
+      } else {
+        if (element.id.includes("-info")) {
+          element.style.display = "none"
+        }else{
+          element.style.color = "#0a30b8";
+          element.style.backgroundColor = "#fff";
+        }
+      }
+    });
+  };
+
+  // Añadir la función de clic a todos los botones
+  items.forEach((element) => {
+    const idElement = element.id;
+    if (idElement.includes("-info")) return
+    element.addEventListener("click", () => selectModalidad(idElement));
+  });
+</script>

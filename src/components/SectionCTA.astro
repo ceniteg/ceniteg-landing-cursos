@@ -15,16 +15,38 @@ import { Phone, Mail } from "@lucide/astro";
             ayudarle a impulsar el éxito y la seguridad de su organización.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button class="flex gap-2 bg-white text-[#0a30b8] hover:bg-white/90 p-4 rounded-3xl">
-                <Phone class="mr-2 h-5 w-5" />
+            <a href="tel:+51956761053" id="llamar" class="flex gap-2 items-center font-semibold bg-white text-[#0a30b8] p-4 rounded-3xl transition-all duration-500 ease-in-out transform hover:-translate-y-[5px]">
+                <lord-icon
+                    src="https://cdn.lordicon.com/wtywrnoz.json"
+                    trigger="hover"
+                    stroke="bold"
+                    target="#llamar"
+                    colors="primary:#0a30b8"
+                    style="width:25px;height:25px">
+                </lord-icon>
                 Llamar Ahora
-            </button>
-            <button
-                class="flex gap-2 border-white text-white hover:bg-white hover:text-[#0a30b8] p-4 rounded-3xl"
+            </a>
+            <a
+                href="https://wa.me/51956761053"
+                target="_blank"
+                class="chat not-odd:flex gap-2 items-center font-semibold border-white text-white hover:bg-white hover:text-[#0a30b8] p-4 rounded-3xl transition-all duration-500 ease-in-out transform hover:-translate-y-[5px]"
             >
-                <Mail class="mr-2 h-5 w-5" />
+                <lord-icon
+                    src="https://cdn.lordicon.com/bpptgtfr.json"
+                    class="current-color"
+                    stroke="bold"
+                    trigger="hover"
+                    target=".chat"
+                    style="width:20px;height:20px">
+                </lord-icon>
                 Enviar Mensaje
-            </button>
+            </a>
         </div>
     </div>
 </section>
+
+<style>
+    .chat:hover {
+        color: #0a30b8;
+    }
+</style>
