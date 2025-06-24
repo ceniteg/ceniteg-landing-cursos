@@ -1,6 +1,10 @@
+---
+import { WHATSAPP_MESSAGE_URL } from "../lib/constants";
+---
+
 <div class="fixed bottom-6 right-5 z-50 group">
   <a
-    href="https://api.whatsapp.com/send?phone=51943542437&text=Hola%2C%20Deseo%20solicitar%20cotizaci%C3%B3n%20sobre%20los%20cursos%20que%20ofrecen."
+    href={WHATSAPP_MESSAGE_URL}
     target="_blank"
     class="transition-all duration-500 hover:scale-105 
            flex bg-transparent w-16 h-16 rounded-full 

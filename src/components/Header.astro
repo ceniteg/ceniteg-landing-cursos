@@ -1,5 +1,6 @@
 ---
-// Header.astro
+import { WHATSAPP_MESSAGE_URL } from "../lib/constants";
+
 ---
 
 <header class="bg-white shadow-md">
@@ -34,7 +35,7 @@
         >Contacto</a
       >
       <a
-        href="https://api.whatsapp.com/send?phone=51943542437&text=Hola%2C%20Deseo%20solicitar%20cotizaci%C3%B3n%20sobre%20los%20cursos%20que%20ofrecen."
+        href={WHATSAPP_MESSAGE_URL}
         target="_blank"
         class="bg-blue-600 text-white px-4 py-2 rounded-3xl hover:bg-blue-700 transition-all duration-500 ease-in-out transform hover:-translate-y-[5px]"
       >
