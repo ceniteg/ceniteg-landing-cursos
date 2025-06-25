@@ -1,0 +1,122 @@
+---
+import {
+  LucideChevronLeft,
+  LucideChevronRight,
+  LucideSquareArrowLeft,
+} from "@lucide/astro";
+
+const clientes = [
+  {
+    name: "Labinorte - Laboratorio Industrial del Norte",
+    image: "/images/labinorte-logo.png",
+  },
+  {
+    name: "Sodexo",
+    image: "/images/sodexo-logo.png",
+  },
+  {
+    name: "La Arena",
+    image: "/images/la-arena-logo.png",
+  },
+  {
+    name: "Inversiones y Negocios CELAL",
+    image: "/images/inversiones-negocios-logo.png",
+  },
+  {
+    name: "Sayser Facility Services",
+    image: "/images/sayser-facility-services-logo.png",
+  },
+  {
+    name: "Salaverry Terminal Internacional",
+    image: "/images/salaverry-terminal-internacional-logo.png",
+  },
+  {
+    name: "Sesuveca",
+    image: "/images/sesuveca-logo.png",
+  },
+  {
+    name: "Inversiones y Negocios - ALBINDEC SAC",
+    image: "/images/inversiones-negocios-albundec-logo.png",
+  }
+];
+---
+
+<style>
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<section id="clientes">
+  <div class="container mx-auto px-2 py-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
+        Nuestro Clientes
+      </h2>
+      <div class="relative w-full overflow-hidden pt-4">
+        <!-- Flecha izquierda -->
+        <button
+          id="left-arrow"
+          class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow cursor-pointer"
+        >
+          <LucideChevronLeft />
+        </button>
+
+        <!-- Contenedor de logos -->
+        <div
+          id="scroll-container"
+          class="scroll-container flex gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap px-6 py-4"
+        >
+          {
+            clientes.map((cliente) => (
+              <img
+                src={cliente.image}
+                alt={cliente.name}
+                class="w-64 h-32 object-contain flex-shrink-0"
+              />
+            ))
+          }
+        </div>
+
+        <!-- Flecha derecha -->
+        <button
+          id="right-arrow"
+          class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow cursor-pointer"
+        >
+          <LucideChevronRight />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+    window.addEventListener("load", () => {
+    const container = document.getElementById("scroll-container");
+    const btnLeft = document.getElementById("left-arrow");
+    const btnRight = document.getElementById("right-arrow");
+
+    // Botones funcionales
+    btnLeft.addEventListener("click", () => {
+        container.scrollBy({ left: -300, behavior: "smooth" });
+    });
+
+    btnRight.addEventListener("click", () => {
+        container.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    // // Scroll automático
+    // let scrollSpeed = 1;
+    // const interval = setInterval(() => {
+    //     if (!container) return;
+    //     if (
+    //     container.scrollLeft + container.clientWidth >=
+    //     container.scrollWidth - 1
+    //     ) {
+    //     clearInterval(interval); // Detener si llegó al final
+    //     } else {
+    //     container.scrollBy({ left: scrollSpeed, behavior: "smooth" });
+    //     }
+    // }, 20);
+    });
+</script>
