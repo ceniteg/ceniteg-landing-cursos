@@ -1,42 +1,47 @@
 ---
 import {
   LucideChevronLeft,
-  LucideChevronRight,
-  LucideSquareArrowLeft,
+  LucideChevronRight
 } from "@lucide/astro";
+
+import { BASE } from "../utils/base";
 
 const clientes = [
   {
     name: "Labinorte - Laboratorio Industrial del Norte",
-    image: "/images/labinorte-logo.png",
-  },
-  {
-    name: "Sodexo",
-    image: "/images/sodexo-logo.png",
-  },
-  {
-    name: "La Arena",
-    image: "/images/la-arena-logo.png",
-  },
-  {
-    name: "Inversiones y Negocios CELAL",
-    image: "/images/inversiones-negocios-logo.png",
-  },
-  {
-    name: "Sayser Facility Services",
-    image: "/images/sayser-facility-services-logo.png",
+    image: "images/labinorte-logo.png",
   },
   {
     name: "Salaverry Terminal Internacional",
-    image: "/images/salaverry-terminal-internacional-logo.png",
+    image: "images/salaverry-terminal-internacional-logo.png",
+  },
+  {
+    name: "SGS",
+    image: "images/sgs-logo.png",
+  },
+  {
+    name: "Sodexo",
+    image: "images/sodexo-logo.png",
+  },
+  {
+    name: "La Arena",
+    image: "images/la-arena-logo.png",
   },
   {
     name: "Sesuveca",
-    image: "/images/sesuveca-logo.png",
+    image: "images/sesuveca-logo.png",
+  },
+  {
+    name: "Sayser Facility Services",
+    image: "images/sayser-facility-services-logo.png",
+  },
+  {
+    name: "Inversiones y Negocios CELAL",
+    image: "images/inversiones-negocios-logo.png",
   },
   {
     name: "Inversiones y Negocios - ALBINDEC SAC",
-    image: "/images/inversiones-negocios-albundec-logo.png",
+    image: "images/inversiones-negocios-albundec-logo.png",
   }
 ];
 ---
@@ -51,9 +56,9 @@ const clientes = [
   <div class="container mx-auto px-2 py-8">
     <div class="text-center mb-16">
       <h2 class="text-3xl lg:text-4xl text-[#0a30b8] mb-4 font-semibold">
-        Nuestro Clientes
+        Empresas que confían en nosotros
       </h2>
-      <div class="relative w-full overflow-hidden pt-4">
+      <div class="relative w-full overflow-hidden pt-6">
         <!-- Flecha izquierda -->
         <button
           id="left-arrow"
@@ -64,19 +69,20 @@ const clientes = [
 
         <!-- Contenedor de logos -->
         <div
-          id="scroll-container"
-          class="scroll-container flex gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap px-6 py-4"
-        >
-          {
-            clientes.map((cliente) => (
-              <img
-                src={cliente.image}
-                alt={cliente.name}
-                class="w-64 h-32 object-contain flex-shrink-0"
-              />
-            ))
-          }
-        </div>
+            id="scroll-container"
+            class="scroll-container flex gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap px-6 py-4"
+          >
+            {
+              clientes.map((cliente) => (
+                <img
+                  src=`${BASE}${cliente.image}`
+                  alt={cliente.name}
+                  class="w-64 h-32 object-contain flex-shrink-0"
+                  loading="lazy"
+                />
+              ))
+            }
+          </div>
 
         <!-- Flecha derecha -->
         <button
@@ -91,32 +97,65 @@ const clientes = [
 </section>
 
 <script is:inline>
-    window.addEventListener("load", () => {
+  window.addEventListener("load", () => {
     const container = document.getElementById("scroll-container");
     const btnLeft = document.getElementById("left-arrow");
     const btnRight = document.getElementById("right-arrow");
+    let autoScrollInterval;
+    let isPaused = false;
+    const scrollAmount = 300;
+    const autoScrollSpeed = 1;
+    const autoScrollDelay = 20;
+    const logosCount = container.children.length / 2;
+    const logoWidth = container.children[0].offsetWidth + 24; // 24 = gap-6 aprox
 
-    // Botones funcionales
+    // Al iniciar, posicionamos el scroll al inicio
+    container.scrollLeft = 0;
+
+    function startAutoScroll() {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => {
+        if (isPaused) return;
+        // Si llegó al final de la lista duplicada, saltar al inicio (sin animación)
+        if (container.scrollLeft >= logoWidth * logosCount) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollBy({ left: autoScrollSpeed, behavior: "smooth" });
+        }
+      }, autoScrollDelay);
+    }
+
+    function pauseAutoScroll() {
+      isPaused = true;
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+    }
+
+    function resumeAutoScroll() {
+      isPaused = false;
+      startAutoScroll();
+    }
+
     btnLeft.addEventListener("click", () => {
-        container.scrollBy({ left: -300, behavior: "smooth" });
+      // pauseAutoScroll();
+      if (container.scrollLeft <= 0) {
+        container.scrollLeft = logoWidth * logosCount;
+      }
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      // setTimeout(resumeAutoScroll, 1500);
     });
 
     btnRight.addEventListener("click", () => {
-        container.scrollBy({ left: 300, behavior: "smooth" });
+      // pauseAutoScroll();
+      if (container.scrollLeft >= logoWidth * logosCount) {
+        container.scrollLeft = 0;
+      }
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      // setTimeout(resumeAutoScroll, 1500);
     });
 
-    // // Scroll automático
-    // let scrollSpeed = 1;
-    // const interval = setInterval(() => {
-    //     if (!container) return;
-    //     if (
-    //     container.scrollLeft + container.clientWidth >=
-    //     container.scrollWidth - 1
-    //     ) {
-    //     clearInterval(interval); // Detener si llegó al final
-    //     } else {
-    //     container.scrollBy({ left: scrollSpeed, behavior: "smooth" });
-    //     }
-    // }, 20);
-    });
+    // container.addEventListener("mouseenter", pauseAutoScroll);
+    // container.addEventListener("mouseleave", resumeAutoScroll);
+
+    // startAutoScroll();
+  });
 </script>

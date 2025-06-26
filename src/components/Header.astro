@@ -1,5 +1,6 @@
 ---
 import { WHATSAPP_MESSAGE_URL } from "../lib/constants";
+import { BASE } from "../utils/base";
 
 ---
 
@@ -9,7 +10,9 @@ import { WHATSAPP_MESSAGE_URL } from "../lib/constants";
   >
     <!-- Logo -->
     <div class="flex items-center">
-      <img src="/images/ceniteg-marca.svg" alt="Logo" class="h-14 w-auto" />
+      <a href="https://ceniteg.com/">
+        <img src=`${BASE}images/ceniteg-marca.svg` alt="Logo" class="h-14 w-auto" />
+      </a> 
     </div>
 
     <!-- Navegación -->

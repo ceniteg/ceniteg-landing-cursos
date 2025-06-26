@@ -1,5 +1,6 @@
 ---
 import { Users, Monitor, MapPin, Zap } from "@lucide/astro";
+import { BASE } from "../utils/base";
 
 const methodology = [
   {
@@ -127,28 +128,28 @@ const activeTab: Methodology = "prescencial";
       </div>
       <div class="grid grid-cols-2 gap-4">
         <img
-          src="/images/vr-training-2.png"
+          src=`${BASE}images/vr-training-2.png`
           alt="Capacitación VR"
           width={300}
           height={200}
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/group-training.webp"
+          src=`${BASE}images/group-training.webp`
           alt="Capacitación Grupal"
           width={300}
           height={200}
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/interactive-training.webp"
+          src=`${BASE}images/interactive-training.webp`
           alt="Capacitación Interactiva"
           width={300}
           height={200}
           class="rounded-lg object-cover w-full h-48"
         />
         <img
-          src="/images/first-aid-training.webp"
+          src=`${BASE}images/first-aid-training.webp`
           alt="Primeros Auxilios"
           width={300}
           height={200}
@@ -189,7 +190,7 @@ const activeTab: Methodology = "prescencial";
       <div class="text-center">
         <div id="presencial-info" class="modalidad space-y-4">
           <img
-            src="/images/classroom-training.webp"
+            src=`${BASE}images/classroom-training.webp`
             alt="Capacitación Presencial"
             width={600}
             height={300}
@@ -203,7 +204,7 @@ const activeTab: Methodology = "prescencial";
 
         <div id="virtual-info" class="modalidad space-y-4 hidden">
           <img
-            src="/images/virtual-training.webp"
+            src=`${BASE}images/virtual-training.webp`
             alt="Capacitación Virtual"
             width={600}
             height={300}
@@ -217,7 +218,7 @@ const activeTab: Methodology = "prescencial";
 
         <div id="inhouse-info" class="modalidad space-y-4 hidden">
           <img
-            src="/images/vr-training-3.webp"
+            src=`${BASE}images/vr-training-3.webp`
             alt="Capacitación In-House"
             width={600}
             height={300}
@@ -231,7 +232,7 @@ const activeTab: Methodology = "prescencial";
 
         <div id="hibrida-info" class="modalidad space-y-4 hidden">
           <img
-            src="/images/vr-training-4.webp"
+            src=`${BASE}images/vr-training-4.webp`
             alt="Capacitación Híbrida"
             width={600}
             height={300}
