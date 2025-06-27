@@ -116,6 +116,7 @@ import { CONTACT_NUMBER } from "../lib/constants";
     if (res.ok) {
       // ✅ Aquí puedes usar tu sistema de toast (ej. react-toastify, vanilla, etc.)
       alert("Mensaje enviado correctamente");
+      form.reset();
     } else {
       alert("Hubo un problema al enviar el mensaje.");
     }
