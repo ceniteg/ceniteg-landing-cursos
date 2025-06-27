@@ -4,12 +4,6 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import WhatsApp from "../components/WhatsApp.astro";
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
 interface Props {
   title: string;
   description: string;
@@ -22,21 +16,10 @@ const { title, description } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/ceniteg.svg" />
-    <title>{title}</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DKDX4WZJKK"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]): void {
-        window.dataLayer.push(args);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-DKDX4WZJKK");
-    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function (w: any, d, s, l, i) {
@@ -51,18 +34,26 @@ const { title, description } = Astro.props;
       })(window, document, "script", "dataLayer", "GTM-TPNFB3CQ");
     </script>
     <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-DKDX4WZJKK"></script>
+    <script is:inline type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DKDX4WZJKK");
+    </script>
+    <!-- End Google tag (gtag.js) -->
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <title>{title}</title>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TPNFB3CQ"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe></noscript
-    >
-    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
     <WhatsApp />
