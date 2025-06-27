@@ -54,22 +54,70 @@ import { CONTACT_NUMBER } from "../lib/constants";
             Complete el formulario y nos pondremos en contacto con usted
           </p>
         </div>
-        <div class="flex flex-col px-0 space-y-3">
-          <div class="grid grid-cols-2 gap-4">
-            <input placeholder="Nombre" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
-            <input placeholder="Apellido" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
+        <form id="form-ceniteg">
+          <div class="flex flex-col px-0 space-y-3">
+            <div class="grid grid-cols-2 gap-4">
+              <input
+                name="nombre"
+                placeholder="Nombre"
+                class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"
+              />
+              <input
+                name="apellido"
+                placeholder="Apellido"
+                class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"
+              />
+            </div>
+            <input
+              name="email"
+              placeholder="Email"
+              type="email"
+              class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"
+            />
+            <input
+              name="telefono"
+              placeholder="Teléfono"
+              class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"
+            />
+            <input
+              name="empresa"
+              placeholder="Empresa"
+              class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"
+            />
+            <textarea
+              name="mensaje"
+              placeholder="Mensaje"
+              rows={4}
+              class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"></textarea>
+            <button
+              class="w-full bg-[#0a30b8] text-white hover:bg-[#0a30b8]/90 py-2 rounded-2xl cursor-pointer"
+            >
+              Enviar Mensaje
+            </button>
           </div>
-          <input placeholder="Email" type="email" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
-          <input placeholder="Teléfono" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
-          <input placeholder="Empresa" class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"/>
-          <textarea placeholder="Mensaje" rows={4} class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"></textarea>
-          <button
-            class="w-full bg-[#0a30b8] text-white hover:bg-[#0a30b8]/90 py-2 rounded-2xl cursor-pointer"
-          >
-            Enviar Mensaje
-          </button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </section>
+
+<script type="module">
+  const form = document.getElementById("form-ceniteg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const res = await fetch("/enviar.php", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (res.ok) {
+      // ✅ Aquí puedes usar tu sistema de toast (ej. react-toastify, vanilla, etc.)
+      alert("Mensaje enviado correctamente");
+    } else {
+      alert("Hubo un problema al enviar el mensaje.");
+    }
+  });
+</script>
