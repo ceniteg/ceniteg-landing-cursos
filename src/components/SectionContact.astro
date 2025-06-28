@@ -1,5 +1,5 @@
 ---
-import { Phone, Mail, MapPin, ArrowRight } from "@lucide/astro";
+import { Phone, Mail, MapPin, CheckCheck, LucideCheckCircle2, CircleAlert } from "@lucide/astro";
 import { CONTACT_NUMBER } from "../lib/constants";
 ---
 
@@ -90,7 +90,9 @@ import { CONTACT_NUMBER } from "../lib/constants";
               rows={4}
               class="ring-1 ring-gray-200 py-1 px-2 rounded-xl"></textarea>
             <button
-              class="w-full bg-[#0a30b8] text-white hover:bg-[#0a30b8]/90 py-2 rounded-2xl cursor-pointer"
+              id="submit-button"
+              type="submit"
+              class="w-full disabled:hover:bg-[#0a30b8] disabled:cursor-default bg-[#0a30b8] text-white hover:bg-[#0a30b8]/90 py-2 rounded-2xl cursor-pointer"
             >
               Enviar Mensaje
             </button>
@@ -98,27 +100,86 @@ import { CONTACT_NUMBER } from "../lib/constants";
         </form>
       </div>
     </div>
+
+    <div id="toast" class="fixed top-4 right-4 bg-white text-black px-4 py-5 rounded-2xl shadow-2xl transition-opacity hidden duration-300">
+      <div class="flex items-center space-x-2 w-sm max-w-sm">
+        <div id="toast-success" class="bg-green-100 p-2 rounded-full hidden">
+            <LucideCheckCircle2 class="h-6 w-6 text-green-500" />
+        </div>
+        <div id="toast-error" class="bg-red-100 p-2 rounded-full hidden">
+            <CircleAlert class="h-6 w-6 text-red-500" />
+        </div>
+        <p id="toast-message" class="text-gray-700">¡El mensaje ha sido enviado correctamente!</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <script type="module">
   const form = document.getElementById("form-ceniteg");
+  const toast = document.getElementById("toast");
+  const toastSuccess = document.getElementById("toast-success");
+  const toastError = document.getElementById("toast-error");
+  const toastMessage = document.getElementById("toast-message");
+  const submitButton = document.getElementById("submit-button");
+
+  function hideToast() {
+    toast.classList.add("hidden");
+    toast.classList.remove("opacity-100");
+  }
+
+  function showToast(status) {
+    toast.classList.remove("hidden");
+    toast.classList.add("opacity-100");
+    if (status === "success") {
+      toastSuccess.classList.remove("hidden");
+      toastError.classList.add("hidden");
+      toastMessage.textContent = "¡El mensaje ha sido enviado correctamente!";
+    } else {
+      toastSuccess.classList.add("hidden");
+      toastError.classList.remove("hidden");
+      toastMessage.textContent = "Error al enviar el mensaje. Por favor, inténtalo de nuevo.";
+    }
+
+    setTimeout(() => {
+      hideToast();
+    }, 5000);
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form);
-    const res = await fetch("/enviar.php", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      // Deshabilitar el botón de envío para evitar múltiples envíos
+      submitButton.disabled = true;
+      submitButton.classList.add("cursor-not-allowed", "opacity-50");
+      submitButton.textContent = "Enviando...";
 
-    if (res.ok) {
-      // ✅ Aquí puedes usar tu sistema de toast (ej. react-toastify, vanilla, etc.)
-      alert("Mensaje enviado correctamente");
-      form.reset();
-    } else {
-      alert("Hubo un problema al enviar el mensaje.");
+
+      const formData = new FormData(form);
+      const res = await fetch("https://ceniteg.com/api/enviar.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        form.reset();
+        // Mostrar el toast de éxito
+        showToast("success");
+      } else {
+        // Mostrar el toast de error
+        showToast("error");
+      }
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error); 
+      // Mostrar el toast de error
+      showToast("error");
+    } finally {
+      // Rehabilitar el botón de envío
+      submitButton.disabled = false;
+      submitButton.classList.remove("cursor-not-allowed", "opacity-50");
+      submitButton.textContent = "Enviar Mensaje";
     }
   });
 </script>
